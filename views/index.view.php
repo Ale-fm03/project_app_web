@@ -6,6 +6,7 @@
     <title>Empresa</title>
 </head>
 <body>
-    <h1>Estoy en la vista del método main() del controlador Landing</h1>
+    <h1>EMPRESA</h1>
+    <a href="?c=Landing&a=iniciarSesion">Iniciar Sesión</a>
 </body>
 </html>
