@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Empresa</h1>
-    <form action="?c=Login&a=login" method="POST">
+    <form action="" method="POST">
         <h3>Iniciar Sesión</h3>
         <div>
             <label for="">Usuario</label>

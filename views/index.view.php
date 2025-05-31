@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>EMPRESA</h1>
-    <a href="?c=Landing&a=iniciarSesion">Iniciar Sesión</a>
+    <a href="?c=Login">Iniciar Sesión</a>
 </body>
 </html>
