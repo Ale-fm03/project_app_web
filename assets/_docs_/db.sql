@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`ROLES`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`ROLES` (
-  `rol_codigo` INT NOT NULL,
+  `rol_codigo` INT NOT NULL AUTO_INCREMENT,
   `rol_nombre` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`rol_codigo`))
 ENGINE = InnoDB;
@@ -32,11 +32,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`USUARIOS` (
   `rol_codigo` INT NOT NULL,
-  `usuario_codigo` INT NOT NULL,
+  `usuario_codigo` INT NOT NULL AUTO_INCREMENT,
   `usuario_nombres` VARCHAR(100) NOT NULL,
   `usuario_apellidos` VARCHAR(100) NOT NULL,
   `usuario_identificacion` VARCHAR(20) NOT NULL,
-  `usuairo_email` VARCHAR(50) NOT NULL,
+  `usuario_email` VARCHAR(50) NOT NULL,
   `usuario_pass` VARCHAR(200) NOT NULL,
   `usuario_estado` TINYINT NOT NULL,
   PRIMARY KEY (`usuario_codigo`),

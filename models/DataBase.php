@@ -5,7 +5,7 @@
         
         $hostname = "localhost";
         $port = "3307";
-        $database = "db_projecto";
+        $database = "mydb";
         $username = "root";
         $password = "";
         $pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password);

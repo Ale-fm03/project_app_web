@@ -3,7 +3,7 @@
     class Login{
         function main(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                require_once "views/login.view.php";
+                require_once "views/empresa/login.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                
@@ -21,4 +21,4 @@
             }
         }
     }
-    ?>
+?>

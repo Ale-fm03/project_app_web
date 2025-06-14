@@ -69,11 +69,11 @@
             return $this->rolCode;
         }
         # Rol Nombre
-        public function setRolNombre($RolNombre){
-            $this->RolNombre = $RolNombre;
+        public function setRolNombre($rolNombre){
+            $this->rolNombre = $rolNombre;
         }
         public function getRolNombre(){
-            return $this->RolNombre;
+            return $this->rolNombre;
         }
         # Usuario Código
         public function setUsuarioCodigo($usuarioCodigo){
@@ -157,7 +157,83 @@
                 die($e->getMessage());
             }
         }
+
+        # CU04 - Registrar Rol
+        public function rolCrear(){
+            try {
+                $sql = 'INSERT INTO ROLES VALUES (:rolCodigo,:rolNombre)';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('rolCodigo', $this->getRolCode());
+                $stmt->bindValue('rolNombre', $this->getRolNombre());
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
+        # CU04 - Consultar Roles
+        public function rolesConsultar(){
+            try {
+                $rolList = [];
+                $sql = 'SELECT * FROM ROLES';
+                $stmt = $this->dbh->query($sql);
+                foreach ($stmt->fetchAll() as $rol) {
+                    $rolObj = new Usuario;
+                    $rolObj->setRolCode($rol['rol_codigo']);
+                    $rolObj->setRolNombre($rol['rol_nombre']);
+                    array_push($rolList, $rolObj);
+                }
+                return $rolList;
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
+        # CU12 - Obtener el Rol por el código
+        public function getRolById($rolCode) {
+            try {
+                $sql = "SELECT * FROM ROLES WHERE rol_codigo=:rolCodigo";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('rolCodigo', $rolCode);
+                $stmt->execute();
+                $rolDb = $stmt->fetch();
+                $rol = new Usuario;
+                $rol->setRolCode($rolDb['rol_codigo']);
+                $rol->setRolNombre($rolDb['rol_nombre']);
+                return $rol;
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
+        # CU05 - Actualizar Rol
+        public function rolActualizar(){
+            try {
+                $sql = 'UPDATE ROLES SET
+                                rol_codigo = :rolCodigo,
+                                rol_nombre = :rolNombre
+                            WHERE rol_codigo = :rolCodigo';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('rolCodigo', $this->getRolCode());
+                $stmt->bindValue('rolNombre', $this->getRolNombre());
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
         
+
+         # CU06 - Eliminar Rol
+        public function rolEliminar($rolCode){
+            try {
+                $sql = 'DELETE FROM ROLES WHERE rol_codigo = :rolCodigo';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('rolCodigo', $rolCode);
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
     }
 
 ?>

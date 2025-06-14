@@ -1,9 +1,9 @@
 <?php
     require_once "models/DataBase.php";   
     if (!isset($_REQUEST['c'])) {
-        require_once "controllers/Landing.php";
-        $controller = new Landing;
-        $controller->main();        
+        require_once "controllers/Usuarios.php";
+        $controller = new Usuarios;
+        $controller->consultarRoles();
     } else {        
         $controller = $_REQUEST['c'];        
         require_once "controllers/" . $controller . ".php";
